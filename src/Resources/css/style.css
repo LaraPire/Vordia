@@ -1,0 +1,20 @@
+@font-face {
+    font-family: Vazir;
+    src: url('../fonts/Vazirmatn.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+body{
+    font-family: Vazir;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+    font-weight: 300;
+    color: #212529;
+    font-size: 1rem;
+    background-color: #e8e8e8;
+    line-height: 2;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

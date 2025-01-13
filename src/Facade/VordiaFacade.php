@@ -1,6 +1,6 @@
 <?php
 
-namespace Rayium\Vordia\Facade;
+namespace Rayiumir\Vordia\Facade;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -1,0 +1,116 @@
+@font-face {
+    font-family: Vazir;
+    src: url('../fonts/Vazirmatn.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+body{
+    font-family: Vazir;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+    font-weight: 300;
+    color: #212529;
+    font-size: 1rem;
+    background-color: #e8e8e8;
+    line-height: 2;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+#wrapper {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-right: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-right: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-right: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-right: -15rem;
+    }
+}
+#menu-toggle {
+    margin-right: 15px;
+}
+
+summary {
+    display: block;
+}
+summary::-webkit-details-marker{
+    display: none;
+}
+
+.p-section-faq__item:nth-of-type(n+2) {
+    margin-top: 32px;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    color: #212529;
+    cursor: pointer;
+}
+.icon {
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    width: 16px;
+    transform-origin: center;
+}
+.icon::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    transition: transform .3s;
+    transform: translateY(-80%) rotate(45deg);
+    border-right: 2px solid #212529;
+    border-bottom: 2px solid #212529;
+}
+
+.is-opened .icon::after {
+    transform: translateY(-25%) rotate(-135deg);
+}
+
+.content {
+    overflow: hidden;
+}
+
+
