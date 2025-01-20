@@ -28,12 +28,12 @@ Route::group(
             ->name("admin.index");
 
         // Logout
-//        $router
-//            ->get(
-//                "/logout",
-//                \Rayium\Lame\Http\Controllers\admin\LogoutController::class
-//            )
-//            ->name("auth.logout")
-//            ->middleware("auth");
+
+        $router
+            ->get(
+                "/logout",
+                \Rayiumir\Vordia\Http\Controllers\Admin\LogoutController::class
+            )
+            ->name("auth.logout");
     }
 );

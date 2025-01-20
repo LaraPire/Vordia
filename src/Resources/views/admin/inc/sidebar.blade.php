@@ -4,7 +4,7 @@
     <div style="width: 250px">
         <div class="p-3">
             <div class="text-center">
-                <a href="#" type="button" class="btn btn-danger rounded-5 btn-sm"><i class="fa-duotone fa-sign-out"></i> خروج</a>
+                <a href="{{ route('auth.logout') }}" type="button" class="btn btn-danger rounded-5 btn-sm"><i class="fa-duotone fa-sign-out"></i> خروج</a>
             </div>
             <div class="d-grid gap-2 mt-3">
                  <a href="#" type="button" class="btn btn-light text-start"><i class="fa-duotone fa-home"></i> پیشخوان </a>
