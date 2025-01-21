@@ -27,6 +27,7 @@ class VordiaServiceProvider extends ServiceProvider
     {
         $this->_loadRoutes();
         $this->_loadViews();
+        $this->_loadMigrations();
     }
 
     /**
@@ -47,6 +48,11 @@ class VordiaServiceProvider extends ServiceProvider
     private function _loadViews(): void
     {
         $this->loadViewsFrom(__DIR__.'/../Resources/views', 'Vordia');
+    }
+
+    private function _loadMigrations(): void
+    {
+        $this->loadMigrationsFrom(__DIR__.'/../Database/migrations');
     }
 
 }
