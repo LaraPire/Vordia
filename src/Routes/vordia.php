@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(
     ["prefix" => "admin"],
-
     static function ($router) {
 
         // Admin
@@ -35,5 +34,37 @@ Route::group(
                 \Rayiumir\Vordia\Http\Controllers\Admin\LogoutController::class
             )
             ->name("auth.logout");
+
+        $router
+            ->any("/login/mobile", [
+                \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
+                "mobile"
+            ])
+            ->name("auth.mobile");
+
+        $router
+            ->post("/check-otp", [
+                \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
+                "checkOTP"
+            ]);
+    }
+);
+
+Route::group(
+    [],
+    static function ($router) {
+
+        $router
+            ->any("/login/mobile", [
+                \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
+                "mobile"
+            ])
+            ->name("auth.mobile");
+
+        $router
+            ->post("/check-otp", [
+                \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
+                "checkOTP"
+            ]);
     }
 );

@@ -5,6 +5,7 @@ namespace Rayiumir\Vordia\Http\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Rayiumir\Vordia\Http\Channels\SmsChannel;
 
 class OTPSms extends Notification
 {
