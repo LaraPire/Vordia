@@ -1,0 +1,68 @@
+{
+    "name": "rayiumir/vordia",
+    "description": "Authentication Mobile for Laravel",
+    "homepage": "https://github.com/Rayiumir/Vordia",
+    "minimum-stability": "stable",
+    "keywords": [
+        "laravel",
+        "authentication",
+        "mobile",
+        "mobile-verification",
+        "otp",
+        "laravel-package",
+        "laravel-authentication",
+        "laravel-mobile-authentication",
+        "laravel-mobile-verification",
+        "laravel-otp",
+        "laravel-package-authentication",
+        "laravel-package-mobile-authentication",
+        "laravel-package-mobile-verification",
+        "laravel-package-otp",
+        "laravel-package-authentication-mobile",
+        "laravel-package-authentication-mobile-verification",
+        "laravel-package-authentication-otp"
+    ],
+    "license": "MIT",
+    "type": "package",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Rayiumir\\Vordia\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rayiumir\\Vordia\\Tests": "tests/"
+        }
+    },
+    "support": {
+        "issues": "https://github.com/Rayiumir/Vordia/issues",
+        "source": "https://github.com/Rayiumir/Vordia"
+    },
+    "authors": [
+        {
+            "name": "Raymond Baghumian",
+            "email": "rayiumir@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.21|^10.0|^11.0",
+        "laravel/framework": "^9.0|^10.0|^11.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3|^10.4|^11.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    }
+}

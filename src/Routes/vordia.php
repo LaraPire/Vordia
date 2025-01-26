@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(
-    ["prefix" => "admin"],
+    ["prefix" => "admin", "middleware" => ["web"]],
     static function ($router) {
 
         // Admin
@@ -24,8 +24,8 @@ Route::group(
                 Rayiumir\Vordia\Http\Controllers\Admin\AdminController::class,
                 "index",
             ])
-            ->name("admin.index");
-
+            ->name("admin.index")
+            ->middleware("auth");
         // Logout
 
         $router
@@ -33,33 +33,18 @@ Route::group(
                 "/logout",
                 \Rayiumir\Vordia\Http\Controllers\Admin\LogoutController::class
             )
-            ->name("auth.logout");
-
-        $router
-            ->any("/login/mobile", [
-                \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
-                "mobile"
-            ])
-            ->name("auth.mobile");
-
-        $router
-            ->post("/check-otp", [
-                \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
-                "checkOTP"
-            ]);
+            ->name("auth.logout")
+            ->middleware("auth");
     }
 );
 
-Route::group(
-    [],
-    static function ($router) {
-
+Route::group(['middleware' => 'web'], static function ($router) {
         $router
-            ->any("/login/mobile", [
+            ->any("/login", [
                 \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
                 "mobile"
             ])
-            ->name("auth.mobile");
+            ->name("login");
 
         $router
             ->post("/check-otp", [

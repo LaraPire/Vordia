@@ -39,7 +39,7 @@
 
         $('#mobileForm').submit(function(event){
             event.preventDefault();
-            $.post("{{ url('/login/mobile') }}",
+            $.post("{{ url('/login') }}",
                 {
                     '_token' : "{{ csrf_token() }}",
                     'mobile' : $('#mobileInput').val()

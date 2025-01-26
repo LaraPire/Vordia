@@ -27,9 +27,7 @@ class MobileController extends Controller
             $loginToken = Hash::make('DCDCojncd@cdjn%!!ghnjrgtn&&');
 
             $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $pin = mt_rand(1000000, 9999999)
-                . mt_rand(1000000, 9999999)
-                . $characters[rand(0, strlen($characters) - 1)];
+            $pin = mt_rand(1000000, 9999999) . mt_rand(1000000, 9999999) . $characters[rand(0, strlen($characters) - 1)];
             $Name = str_shuffle($pin);
 
             if ($user) {
@@ -39,8 +37,8 @@ class MobileController extends Controller
                 ]);
             } else {
                 $user = User::create([
-                    'name' => $Name, // Set a default value if not provided
-                    'email' => $request->email ?? 'test@gmail.com', // Set to null if not provided
+                    'name' => $Name,
+                    'email' => $request->email ?? 'test@gmail.com',
                     'password' => bcrypt($request->password ?? 'password'),
                     'mobile' => $request->mobile,
                     'otp' => $OTPCode,

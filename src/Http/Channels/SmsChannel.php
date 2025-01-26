@@ -2,6 +2,7 @@
 
 namespace Rayiumir\Vordia\Http\Channels;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Rayiumir\Vordia\Http\Notifications\OTPSms;
 
@@ -12,8 +13,8 @@ class SmsChannel
         $receptor = $notifiable->mobile;
         $param1 = $OTPSms->code;
 
-        $apiKey = env('QaVYy9iOSgKMyF95yMxOVARJre6dakjfmRKFGw697ks1r2iwvzM34rDf6O9kvcdq');
-//        $templateId = env('211798');
+        $apiKey = env('SMSIR_API_KEY');
+        $templateId = env('SMSIR_OTP_TEMPLATE_ID');
 
         if (!$apiKey || !$templateId) {
             Log::error('API key or Template ID is missing');
@@ -27,7 +28,7 @@ class SmsChannel
                 'Content-Type' => 'application/json',
             ])->post('https://api.sms.ir/v1/send/verify', [
                 'mobile' => $receptor,
-                'templateId' => '211798',
+                'templateId' => $templateId,
                 'parameters' => [
                     ['name' => 'Code', 'value' => $param1],
                 ],
