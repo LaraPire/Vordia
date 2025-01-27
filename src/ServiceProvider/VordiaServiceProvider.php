@@ -28,6 +28,8 @@ class VordiaServiceProvider extends ServiceProvider
         $this->_loadRoutes();
         $this->_loadViews();
         $this->_loadMigrations();
+        $this->_loadScripts();
+        $this->_loadController();
     }
 
     /**
@@ -48,11 +50,41 @@ class VordiaServiceProvider extends ServiceProvider
     private function _loadViews(): void
     {
         $this->loadViewsFrom(__DIR__.'/../Resources/views', 'Vordia');
+
+        $this->publishes([
+            __DIR__.'/../Resources/views' => resource_path('views/')
+        ],'vordia-views');
     }
 
     private function _loadMigrations(): void
     {
         $this->loadMigrationsFrom(__DIR__.'/../Database/migrations');
+
+        $this->publishes([
+            __DIR__.'/../Database/migrations' => database_path('migrations')
+        ], 'vordia-migrations');
+    }
+
+    private function _loadScripts(): void
+    {
+        $this->publishes([
+            __DIR__.'/../Resources/css' => public_path('/css')
+        ], 'vordia-styles');
+
+        $this->publishes([
+            __DIR__.'/../Resources/fonts' => public_path('/fonts')
+        ], 'vordia-fonts');
+
+        $this->publishes([
+            __DIR__.'/../Resources/js' => public_path('/js')
+        ], 'vordia-scripts');
+    }
+
+    private function _loadController(): void
+    {
+        $this->publishes([
+            __DIR__.'/../Http/Controllers' => app_path('Http/Controllers'),
+        ], 'vordia-controllers');
     }
 
 }

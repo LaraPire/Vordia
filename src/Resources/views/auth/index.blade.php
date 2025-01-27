@@ -7,7 +7,7 @@
                 <div class="mt-5">
                     <form class="mb-3" id="mobileForm">
                         <label for="mobileInput">شماره موبایل را وارد کنید :</label>
-                        <input type="text" id="mobileInput" class="form-control rounded-5 text-center mt-3" placeholder="شماره تلفن همراه را وارد کنید">
+                        <input type="text" id="mobileInput" class="form-control rounded-5 text-center mt-3" placeholder="09---------">
                         <div id="mobileInputErrorText" class="text-danger mt-3">
                             <strong id="mobileInputErrorText"></strong>
                         </div>

@@ -24,7 +24,7 @@
     ],
     "license": "MIT",
     "type": "package",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "autoload": {
         "psr-4": {
             "Rayiumir\\Vordia\\": "src/"
@@ -57,9 +57,7 @@
         "sort-packages": true
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
+        "branch-alias": {"dev-master" : "1.0.1-dev"}
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
