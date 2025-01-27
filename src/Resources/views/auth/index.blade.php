@@ -6,25 +6,25 @@
             <div class="card-body">
                 <div class="mt-5">
                     <form class="mb-3" id="mobileForm">
-                        <input type="number" id="mobileInput" class="form-control rounded-5" placeholder="شماره تلفن همراه را وارد کنید">
+                        <label for="mobileInput">شماره موبایل را وارد کنید :</label>
+                        <input type="text" id="mobileInput" class="form-control rounded-5 text-center mt-3" placeholder="شماره تلفن همراه را وارد کنید">
                         <div id="mobileInputErrorText" class="text-danger mt-3">
                             <strong id="mobileInputErrorText"></strong>
                         </div>
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary rounded-5 mt-5">دریافت کد تایید</button>
+                            <button type="submit" class="btn btn-primary rounded-5 mt-2">دریافت کد تایید</button>
                         </div>
                     </form>
                 </div>
 
                 <form id="checkOTPForm">
-                    <input type="text" id="checkOTPInput" class="form-control rounded-5" placeholder="رمز یکبار مصرف">
-
+                    <label for="checkOTPInput">رمز یکبار مصرف را وارد کنید :</label>
+                    <input type="text" id="checkOTPInput" class="form-control rounded-5 text-center mt-3" placeholder="رمز یکبار مصرف">
                     <div id="checkOTPInputError" class="input-error-validation">
                         <strong id="checkOTPInputErrorText"></strong>
                     </div>
-
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-success rounded-5 mt-5">ورود به سایت</button>
+                        <button type="submit" class="btn btn-success rounded-5 mt-2">ورود به سایت</button>
                     </div>
                 </form>
             </div>
