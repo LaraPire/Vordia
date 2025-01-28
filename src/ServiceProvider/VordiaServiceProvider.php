@@ -52,16 +52,9 @@ class VordiaServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../Resources/views', 'Vordia');
 
         $this->publishes([
-            __DIR__.'/../Resources/views/admin' => resource_path('views/admin')
+            __DIR__.'/../Resources/views' => resource_path('views/')
         ],'vordia-views');
-
-        $this->publishes([
-            __DIR__.'/../Resources/views/auth' => resource_path('views/auth')
-        ],'vordia-views');
-
-        $this->publishes([
-            __DIR__.'/../Resources/views/layouts' => resource_path('views/layouts')
-        ],'vordia-views');
+        
     }
 
     private function _loadMigrations(): void
