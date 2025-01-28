@@ -24,7 +24,6 @@
     ],
     "license": "MIT",
     "type": "package",
-    "version": "1.0.1",
     "autoload": {
         "psr-4": {
             "Rayiumir\\Vordia\\": "src/"
@@ -48,7 +47,8 @@
     "require": {
         "php": "^8.0",
         "illuminate/support": "^9.21|^10.0|^11.0",
-        "laravel/framework": "^9.0|^10.0|^11.0"
+        "laravel/framework": "^9.0|^10.0|^11.0",
+        "rayiumir/vordia": "dev-main"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3|^10.4|^11.0"
@@ -57,7 +57,11 @@
         "sort-packages": true
     },
     "extra": {
-        "branch-alias": {"dev-master" : "1.0.1-dev"}
+        "laravel": {
+            "providers": [
+                "Rayiumir\\Vordia\\ServiceProvider\\VordiaServiceProvider"
+            ]
+        }
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
