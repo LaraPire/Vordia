@@ -24,7 +24,8 @@
     "license": "MIT",
     "type": "package",
     "support": {
-        "issues": "https://github.com/Rayiumir/Vordia/issues"
+        "issues": "https://github.com/Rayiumir/Vordia/issues",
+        "source": "https://github.com/Rayiumir/Vordia"
     },
     "authors": [
         {
@@ -35,8 +36,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^9.21|^10.0|^11.0",
-        "laravel/framework": "^9.0|^10.0|^11.0"
+        "illuminate/support": "^9.21|^10.0|^11.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3|^10.4|^11.0"
@@ -48,10 +48,10 @@
         "laravel": {
             "providers": [
                 "Rayiumir\\Vordia\\ServiceProvider\\VordiaServiceProvider"
-            ]
-        },
-        "aliases": {
-            "VordiaFacade": "Rayiumir\\Vordia\\Facade\\VordiaFacade"
+            ],
+            "aliases": {
+                "VordiaFacade": "Rayiumir\\Vordia\\Facade\\VordiaFacade"
+            }
         }
     },
     "autoload": {
@@ -67,6 +67,7 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-    }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
-
