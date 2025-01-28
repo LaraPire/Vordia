@@ -85,6 +85,14 @@ class VordiaServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Http/Controllers' => app_path('Http/Controllers'),
         ], 'vordia-controllers');
+
+        $this->publishes([
+            __DIR__.'/../Http/Channels' => app_path('Http/Channels'),
+        ], 'vordia-channels');
+
+        $this->publishes([
+            __DIR__.'/../Http/Notifications' => app_path('Http/Notifications'),
+        ], 'vordia-notifications');
     }
 
 }
