@@ -1,5 +1,7 @@
 @extends('Vordia::layouts.app')
-
+@section('title')
+    - ورود به سایت
+@endsection
 @section('content')
     <div class="col-md-4 offset-md-4 mt-5">
         <div class="card rounded-5 shadow-sm mt-5">
@@ -19,7 +21,7 @@
                             <button type="submit" class="btn btn-primary rounded-5 mt-2">دریافت کد تایید</button>
                         </div>
                     </form>
-                    
+
                 </div>
 
                 <form id="checkOTPForm">
