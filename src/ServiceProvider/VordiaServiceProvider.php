@@ -78,6 +78,10 @@ class VordiaServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Resources/js' => public_path('/js')
         ], 'vordia-scripts');
+
+        $this->publishes([
+            __DIR__.'/../Resources/webfonts' => public_path('/webfonts')
+        ], 'vordia-scripts');
     }
 
     private function _loadController(): void

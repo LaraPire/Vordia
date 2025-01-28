@@ -26,10 +26,6 @@ class MobileController extends Controller
             $OTPCode = mt_rand(100000, 999999);
             $loginToken = Hash::make('DCDCojncd@cdjn%!!ghnjrgtn&&');
 
-            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $pin = mt_rand(1000000, 9999999) . mt_rand(1000000, 9999999) . $characters[rand(0, strlen($characters) - 1)];
-            $Name = str_shuffle($pin);
-
             if ($user) {
                 $user->update([
                     'otp' => $OTPCode,
@@ -37,8 +33,8 @@ class MobileController extends Controller
                 ]);
             } else {
                 $user = User::create([
-                    'name' => $Name,
-                    'email' => $request->email ?? 'test@gmail.com',
+                    'name' => $request->name ?? 'Null',
+                    'email' => $request->email ?? 'null@gmail.com',
                     'password' => bcrypt($request->password ?? 'password'),
                     'mobile' => $request->mobile,
                     'otp' => $OTPCode,
@@ -46,7 +42,6 @@ class MobileController extends Controller
                 ]);
             }
 
-            // Send OTP via sms.ir
             Notification::send($user, new OTPSms($OTPCode));
 
             return response(['login_token' => $loginToken], 200);

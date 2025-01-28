@@ -1,10 +1,14 @@
 @extends('Vordia::layouts.app')
 
 @section('content')
-    <div class="col-6 offset-md-3 mt-5">
+    <div class="col-md-4 offset-md-4 mt-5">
         <div class="card rounded-5 shadow-sm mt-5">
             <div class="card-body">
-                <div class="mt-5">
+                <div class="text-center">
+                    <i class="fa-duotone fa-solid fa-message-sms fa-4x"></i>
+                </div>
+                <div class="mt-3">
+
                     <form class="mb-3" id="mobileForm">
                         <label for="mobileInput">شماره موبایل را وارد کنید :</label>
                         <input type="text" id="mobileInput" class="form-control rounded-5 text-center mt-3" placeholder="09---------">
@@ -15,6 +19,7 @@
                             <button type="submit" class="btn btn-primary rounded-5 mt-2">دریافت کد تایید</button>
                         </div>
                     </form>
+                    
                 </div>
 
                 <form id="checkOTPForm">
@@ -27,6 +32,7 @@
                         <button type="submit" class="btn btn-success rounded-5 mt-2">ورود به سایت</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
