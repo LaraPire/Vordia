@@ -39,6 +39,8 @@ protected $fillable = [
 
 Currently, the Vordia package uses the `sms.ir` panel, and other panels will be added in the near future.
 
+Add this code to `.env`
+
 ```bash
 SMSIR_API_KEY= Add API KEY
 SMSIR_OTP_TEMPLATE_ID= ADD OTP TEMPLATE ID
