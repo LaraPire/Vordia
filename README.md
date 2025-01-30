@@ -1,3 +1,12 @@
+<div align="center">
+    <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dd/rayiumir/vordia">
+    <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dm/rayiumir/vordia">
+    <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/rayiumir/vordia">
+    <img alt="Packagist License" src="https://img.shields.io/packagist/l/rayiumir/vordia">
+    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/rayiumir/vordia">
+    <img alt="Packagist Dependency Version" src="https://img.shields.io/packagist/dependency-v/rayiumir/vordia/PHP">
+</div>
+
 # Vordia
 
 A simple and lightweight mobile authentication package for Laravel And it has a default admin panel.
