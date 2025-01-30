@@ -1,4 +1,7 @@
 <div align="center">
+    <a href="https://github.com/Rayiumir/Vordia" target="_blank">
+        <img src="./art/Vordia.png" alt="Vordia Logo">
+    </a>
     <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dd/rayiumir/vordia">
     <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dm/rayiumir/vordia">
     <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/rayiumir/vordia">
