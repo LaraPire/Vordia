@@ -60,3 +60,9 @@ Add this code to `.env`
 SMSIR_API_KEY= Add API KEY
 SMSIR_OTP_TEMPLATE_ID= ADD OTP TEMPLATE ID
 ```
+
+# Screenshots
+
+<div align="center">
+    <img src="./screenshots/Package_Vordia.png" alt="Vordia Screenshots">
+</div>
