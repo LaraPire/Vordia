@@ -18,3 +18,9 @@ body{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/* Login */
+
+.code {
+    padding: 2px;
+}

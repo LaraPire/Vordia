@@ -13,7 +13,16 @@
 
                     <form class="mb-3" id="mobileForm">
                         <label for="mobileInput">شماره موبایل را وارد کنید :</label>
-                        <input type="text" id="mobileInput" class="form-control rounded-5 text-center mt-3" placeholder="09---------">
+                        <div class="row">
+                            <div class="col-9 col-md-10">
+                                <input type="text" id="mobileInput" class="form-control rounded-5 text-center mt-2" placeholder="---------09">
+                            </div>
+                            <div class="col-3 col-md-2">
+                                <div class="card mt-2 rounded-5 text-center code">
+                                    98+
+                                </div>
+                            </div>
+                        </div>
                         <div id="mobileInputErrorText" class="text-danger mt-3">
                             <strong id="mobileInputErrorText"></strong>
                         </div>
