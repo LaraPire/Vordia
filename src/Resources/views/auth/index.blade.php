@@ -1,7 +1,9 @@
 @extends('Vordia::layouts.app')
+
 @section('title')
     - ورود به سایت
 @endsection
+
 @section('content')
     <div class="col-md-4 offset-md-4 mt-5">
         <div class="card rounded-5 shadow-sm mt-5">
@@ -62,18 +64,20 @@
                     'mobile' : $('#mobileInput').val()
 
                 } , function(response , status){
-                    console.log(response , status);
+                    // console.log(response , status);
                     loginToken = response.login_token;
 
                     $('#mobileForm').fadeOut();
                     $('#checkOTPForm').fadeIn();
 
+                    toastr.success('کد تاییدیه به شماره موبایل شما ارسال شد!');
                 }).fail(function(response){
                 console.log(response.responseJSON);
                 if (response.responseJSON && response.responseJSON.errors && response.responseJSON.errors.mobile) {
                     $('#mobileInput').addClass('mb-1');
                     $('#mobileInputError').fadeIn();
                     $('#mobileInputErrorText').html(response.responseJSON.errors.mobile[0]);
+
                 } else {
                     $('#mobileInputErrorText').html('An error occurred. Please try again.');
                     $('#mobileInputError').fadeIn();
@@ -93,7 +97,7 @@
                 } , function(response , status){
                     console.log(response , status);
                     $(location).attr('href' , "{{ route('admin.index') }}");
-
+                    toastr.success('با موفقیت تایید شد!');
                 }).fail(function(response){
                 console.log(response.responseJSON);
                 $('#checkOTPInput').addClass('mb-1');
