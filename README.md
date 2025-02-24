@@ -63,6 +63,21 @@ SMSIR_OTP_TEMPLATE_ID= ADD OTP TEMPLATE ID
 
 # Screenshots
 
-<div align="center">
-    <img src="./screenshots/Package_Vordia.png" alt="Vordia Screenshots">
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" width="1000px">Login Mobile</th>
+      <th scope="col" width="1000px">Check OTP Login Mobile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <img src="./screenshots/login.png" width="100%" alt="Login Mobile">
+      </td>
+      <td>
+        <img src="./screenshots/checkOTP.png" width="100%" alt="Check OTP Login Mobile">
+      </td>
+    </tr>
+  </tbody>
+</table>
