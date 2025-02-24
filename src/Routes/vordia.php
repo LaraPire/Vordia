@@ -47,9 +47,15 @@ Route::group(['middleware' => 'web'], static function ($router) {
             ->name("login");
 
         $router
-            ->post("/check-otp", [
+            ->post("/checkOTP", [
                 \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
                 "checkOTP"
             ]);
+
+    $router
+        ->post("/resendOTP", [
+            \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
+            "resendOTP"
+        ]);
     }
 );

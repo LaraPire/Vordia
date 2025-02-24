@@ -36,13 +36,17 @@
                 </div>
 
                 <form id="checkOTPForm">
-                    <label for="checkOTPInput">رمز یکبار مصرف را وارد کنید :</label>
-                    <input type="text" id="checkOTPInput" class="form-control rounded-5 text-center mt-3" placeholder="رمز یکبار مصرف">
+                    <label for="checkOTPInput">رمز یک بار مصرف را وارد کنید :</label>
+                    <input type="text" id="checkOTPInput" class="form-control rounded-5 text-center mt-3" placeholder="رمز یک بار مصرف">
                     <div id="checkOTPInputError" class="input-error-validation">
                         <strong id="checkOTPInputErrorText"></strong>
                     </div>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-success rounded-5 mt-2">ورود به سایت</button>
+                        <div>
+                            <button class="btn btn-secondary btn-sm rounded-5" id="resendOTP" type="submit">ارسال مجدد</button>
+                            <span id="Time" class="fw-bold"></span>
+                        </div>
                     </div>
                 </form>
 
@@ -63,8 +67,7 @@
                     '_token' : "{{ csrf_token() }}",
                     'mobile' : $('#mobileInput').val()
 
-                } , function(response , status){
-                    // console.log(response , status);
+                } , function(response){
                     loginToken = response.login_token;
 
                     $('#mobileForm').fadeOut();
@@ -72,7 +75,6 @@
 
                     toastr.success('کد تاییدیه به شماره موبایل شما ارسال شد!');
                 }).fail(function(response){
-                console.log(response.responseJSON);
                 if (response.responseJSON && response.responseJSON.errors && response.responseJSON.errors.mobile) {
                     $('#mobileInput').addClass('mb-1');
                     $('#mobileInputError').fadeIn();
@@ -88,23 +90,63 @@
         $('#checkOTPForm').submit(function(event){
             event.preventDefault();
 
-            $.post("{{ url('/check-otp') }}",
+            $.post("{{ url('/checkOTP') }}",
                 {
                     '_token' : "{{ csrf_token() }}",
                     'otp' : $('#checkOTPInput').val(),
                     'login_token' : loginToken
 
-                } , function(response , status){
-                    console.log(response , status);
+                } , function(){
                     $(location).attr('href' , "{{ route('admin.index') }}");
                     toastr.success('با موفقیت تایید شد!');
                 }).fail(function(response){
-                console.log(response.responseJSON);
                 $('#checkOTPInput').addClass('mb-1');
                 $('#checkOTPInputError').fadeIn();
                 $('#checkOTPInputErrorText').html(response.responseJSON.errors.otp[0]);
             })
         });
+
+        $('#resendOTP').click(function(e){
+
+            e.preventDefault();
+
+            $.post("{{ url('/resendOTP') }}",
+                {
+                    '_token' : "{{ csrf_token() }}",
+                    'login_token' : loginToken
+
+                } , function(response){
+                    loginToken = response.login_token;
+                    toastr.success('رمز یک بار مصرف به شماره موبایل شما ارسال شد!');
+
+                    $('#resendOTP').fadeOut();
+                    timer();
+                    $('#Time').fadeIn();
+
+                }).fail(function(){
+                toastr.error('مشکل در ارسال دوباره رمز یکبار مصرف، مجددا تلاش کنید');
+            })
+        });
+
+        function timer() {
+            let time = "1:01";
+            let interval = setInterval(function() {
+                let countdown = time.split(':');
+                let minutes = parseInt(countdown[0], 10);
+                let seconds = parseInt(countdown[1], 10);
+                --seconds;
+                minutes = (seconds < 0) ? --minutes : minutes;
+                if (minutes < 0) {
+                    clearInterval(interval);
+                    $('#Time').hide();
+                    $('#resendOTP').fadeIn();
+                };
+                seconds = (seconds < 0) ? 59 : seconds;
+                seconds = (seconds < 10) ? '0' + seconds : seconds;
+                $('#Time').html(minutes + ':' + seconds);
+                time = minutes + ':' + seconds;
+            }, 1000);
+        }
     </script>
 @endsection
 

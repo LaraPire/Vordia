@@ -70,4 +70,29 @@ class MobileController extends Controller
             return response(['errors' => $ex->getMessage()], 422);
         }
     }
+
+    public function resendOTP(Request $request)
+    {
+        $request->validate([
+            'login_token' => 'required'
+        ]);
+
+        try {
+
+            $user = User::where('login_token', $request->login_token)->firstOrFail();
+            $OTPCode = mt_rand(100000, 999999);
+            $loginToken = Hash::make('DCDCojncd@cdjn%!!ghnjrgtn&&');
+
+            $user->update([
+                'otp' => $OTPCode,
+                'login_token' => $loginToken
+            ]);
+
+            Notification::send($user, new OTPSms($OTPCode));
+
+            return response(['login_token' => $loginToken], 200);
+        } catch (\Exception $ex) {
+            return response(['errors' => $ex->getMessage()], 422);
+        }
+    }
 }
