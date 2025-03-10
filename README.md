@@ -49,10 +49,24 @@ protected $fillable = [
         'login_token'
     ];
 ```
+# List of SMS Operator
+
+<table>
+    <thead>
+        <tr>
+            <th>SMS Operator</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SMSIR</td>
+            <td><a href="https://sms.ir">https://sms.ir/</a></td>
+        </tr>
+    </tbody>
+</table>
 
 # SMS API KEY
-
-Currently, the Vordia package uses the `sms.ir` panel, and other panels will be added in the near future.
 
 Add this code to `.env`
 
