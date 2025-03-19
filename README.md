@@ -71,6 +71,7 @@ protected $fillable = [
 Add this code to `.env`
 
 ```bash
+SMS_DRIVER=smsir
 SMSIR_API_KEY= Add API KEY
 SMSIR_OTP_TEMPLATE_ID= ADD OTP TEMPLATE ID
 ```
