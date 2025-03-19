@@ -2,7 +2,6 @@
 
 namespace Rayiumir\Vordia\Http\Channels;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Rayiumir\Vordia\Http\Notifications\OTPSms;
 
@@ -11,45 +10,18 @@ class SmsChannel
     public function send($notifiable, OTPSms $OTPSms): string
     {
         $receptor = $notifiable->mobile;
-        $param1 = $OTPSms->code;
-
-        $apiKey = env('SMSIR_API_KEY');
-        $templateId = env('SMSIR_OTP_TEMPLATE_ID');
-
-        if (!$apiKey || !$templateId) {
-            Log::error('API key or Template ID is missing');
-            return 'Configuration error';
-        }
+        $parameters = $OTPSms->toSms($notifiable);
 
         try {
-            $response = Http::withHeaders([
-                'X-API-KEY' => $apiKey,
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-            ])->post('https://api.sms.ir/v1/send/verify', [
-                'mobile' => $receptor,
-                'templateId' => $templateId,
-                'parameters' => [
-                    ['name' => 'Code', 'value' => $param1],
-                ],
-            ]);
-
-            if ($response->successful()) {
-                return 'Message sent successfully';
-            } else {
-                Log::error('SMS sending failed', [
-                    'receptor' => $receptor,
-                    'status' => $response->status(),
-                    'response' => $response->json() ?? $response->body(),
-                ]);
-                return 'Failed to send message';
-            }
-        } catch (\Exception $ex) {
-            Log::error('SMS sending exception', [
+            $driver = app(VordiaManager::class)->driver();
+            $driver->send($receptor, $parameters);
+            return 'Message sent successfully';
+        } catch (\Exception $e) {
+            Log::error('SMS sending failed', [
                 'receptor' => $receptor,
-                'exception' => $ex->getMessage(),
+                'error' => $e->getMessage()
             ]);
-            return 'Failed to send message due to an exception';
+            return 'Failed to send message: ' . $e->getMessage();
         }
     }
 }

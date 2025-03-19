@@ -3,7 +3,6 @@
 namespace Rayiumir\Vordia\ServiceProvider;
 
 use Illuminate\Support\ServiceProvider;
-use Rayiumir\Vordia\Vordia;
 
 class VordiaServiceProvider extends ServiceProvider
 {
@@ -14,9 +13,9 @@ class VordiaServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind('Vordia', function() {
-            return new Vordia();
-        });
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/vordia.php', 'vordia'
+        );
     }
     /**
      * Bootstrap any package services.
@@ -30,6 +29,7 @@ class VordiaServiceProvider extends ServiceProvider
         $this->_loadMigrations();
         $this->_loadScripts();
         $this->_loadController();
+        $this->_loadConfig();
     }
 
     /**
@@ -54,7 +54,7 @@ class VordiaServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Resources/views' => resource_path('views/')
         ],'vordia-views');
-        
+
     }
 
     private function _loadMigrations(): void
@@ -98,6 +98,13 @@ class VordiaServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Http/Notifications' => app_path('Http/Notifications'),
         ], 'vordia-notifications');
+    }
+
+    private function _loadConfig(): void
+    {
+        $this->publishes([
+            __DIR__.'/../config' => config_path('/config'),
+        ], 'vordia-config');
     }
 
 }

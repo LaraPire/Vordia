@@ -89,7 +89,6 @@
 
         $('#checkOTPForm').submit(function(event){
             event.preventDefault();
-
             $.post("{{ url('/checkOTP') }}",
                 {
                     '_token' : "{{ csrf_token() }}",
