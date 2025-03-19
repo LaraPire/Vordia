@@ -4,6 +4,7 @@ namespace Rayiumir\Vordia\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 //use Illuminate\Support\Facades\Request;
 
 class LogoutController

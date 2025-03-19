@@ -12,6 +12,7 @@ class OTPSms extends Notification
     use Queueable;
 
     public $code;
+
     /**
      * Create a new notification instance.
      */
@@ -36,9 +37,9 @@ class OTPSms extends Notification
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('The introduction to the notification.')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**
@@ -48,15 +49,12 @@ class OTPSms extends Notification
      */
     public function toArray($notifiable): array
     {
-        return [
-            //
+        return [//
         ];
     }
 
     public function toSms($notifiable)
     {
-        return [
-            'code' => $this->code
-        ];
+        return ['code' => $this->code];
     }
 }

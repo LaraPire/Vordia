@@ -15,22 +15,22 @@
 </head>
 <body>
 
-    <main class="container">
-        @yield('content')
-    </main>
+<main class="container">
+    @yield('content')
+</main>
 
-    {{--  Javascript  --}}
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
-    <script>
-        @foreach(["message", "success", "error", "info", "warning"] as $err)
+{{--  Javascript  --}}
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/toastr.min.js') }}"></script>
+<script>
+    @foreach(["message", "success", "error", "info", "warning"] as $err)
             @if( Session::has($err) )
-                toastr.options = { "progressBar": true };
-                toastr["{{ $err }}"]("{{ session($err) }}");
-            @endif
-        @endforeach
-    </script>
+        toastr.options = {"progressBar": true};
+    toastr["{{ $err }}"]("{{ session($err) }}");
+    @endif
+    @endforeach
+</script>
 
-    @yield('scripts')
+@yield('scripts')
 </body>
 </html>
