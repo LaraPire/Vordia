@@ -12,50 +12,23 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Rayiumir\Vordia\Http\Controllers\Admin\LogoutController;
+use Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController;
 
-Route::group(
-    ["prefix" => "admin", "middleware" => ["web"]],
-    static function ($router) {
+Route::group(["prefix" => "admin", "middleware" => ["web"]], static function ($router) {
 
-        // Admin
+    // Admin
 
-        $router
-            ->get("/", [
-                Rayiumir\Vordia\Http\Controllers\Admin\AdminController::class,
-                "index",
-            ])
-            ->name("admin.index")
-            ->middleware("auth");
-        // Logout
+    $router->get("/", [Rayiumir\Vordia\Http\Controllers\Admin\AdminController::class, "index",])->name("admin.index")->middleware("auth");
+    // Logout
 
-        $router
-            ->get(
-                "/logout",
-                \Rayiumir\Vordia\Http\Controllers\Admin\LogoutController::class
-            )
-            ->name("auth.logout")
-            ->middleware("auth");
-    }
-);
+    $router->get("/logout", LogoutController::class)->name("auth.logout")->middleware("auth");
+});
 
 Route::group(['middleware' => 'web'], static function ($router) {
-        $router
-            ->any("/login", [
-                \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
-                "mobile"
-            ])
-            ->name("login");
+    $router->any("/login", [MobileController::class, "mobile"])->name("login");
 
-        $router
-            ->post("/checkOTP", [
-                \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
-                "checkOTP"
-            ]);
+    $router->post("/checkOTP", [MobileController::class, "checkOTP"]);
 
-    $router
-        ->post("/resendOTP", [
-            \Rayiumir\Vordia\Http\Controllers\Auth\Mobile\MobileController::class,
-            "resendOTP"
-        ]);
-    }
-);
+    $router->post("/resendOTP", [MobileController::class, "resendOTP"]);
+});

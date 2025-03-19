@@ -2,6 +2,7 @@
 
 namespace Rayiumir\Vordia\Http\Channels;
 
+use Exception;
 use Illuminate\Support\Facades\Log;
 use Rayiumir\Vordia\Http\Notifications\OTPSms;
 
@@ -16,7 +17,7 @@ class SmsChannel
             $driver = app(VordiaManager::class)->driver();
             $driver->send($receptor, $parameters);
             return 'Message sent successfully';
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Log::error('SMS sending failed', [
                 'receptor' => $receptor,
                 'error' => $e->getMessage()

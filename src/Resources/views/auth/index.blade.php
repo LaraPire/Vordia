@@ -17,7 +17,8 @@
                         <label for="mobileInput">شماره موبایل را وارد کنید :</label>
                         <div class="row">
                             <div class="col-9 col-md-10">
-                                <input type="text" id="mobileInput" class="form-control rounded-5 text-center mt-2" placeholder="---------09">
+                                <input type="text" id="mobileInput" class="form-control rounded-5 text-center mt-2"
+                                       placeholder="---------09">
                             </div>
                             <div class="col-3 col-md-2">
                                 <div class="card mt-2 rounded-5 text-center code">
@@ -37,14 +38,16 @@
 
                 <form id="checkOTPForm">
                     <label for="checkOTPInput">رمز یک بار مصرف را وارد کنید :</label>
-                    <input type="text" id="checkOTPInput" class="form-control rounded-5 text-center mt-3" placeholder="رمز یک بار مصرف">
+                    <input type="text" id="checkOTPInput" class="form-control rounded-5 text-center mt-3"
+                           placeholder="رمز یک بار مصرف">
                     <div id="checkOTPInputError" class="input-error-validation">
                         <strong id="checkOTPInputErrorText"></strong>
                     </div>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-success rounded-5 mt-2">ورود به سایت</button>
                         <div>
-                            <button class="btn btn-secondary btn-sm rounded-5" id="resendOTP" type="submit">ارسال مجدد</button>
+                            <button class="btn btn-secondary btn-sm rounded-5" id="resendOTP" type="submit">ارسال مجدد
+                            </button>
                             <span id="Time" class="fw-bold"></span>
                         </div>
                     </div>
@@ -60,21 +63,21 @@
         let loginToken;
         $('#checkOTPForm').hide();
 
-        $('#mobileForm').submit(function(event){
+        $('#mobileForm').submit(function (event) {
             event.preventDefault();
             $.post("{{ url('/login') }}",
                 {
-                    '_token' : "{{ csrf_token() }}",
-                    'mobile' : $('#mobileInput').val()
+                    '_token': "{{ csrf_token() }}",
+                    'mobile': $('#mobileInput').val()
 
-                } , function(response){
+                }, function (response) {
                     loginToken = response.login_token;
 
                     $('#mobileForm').fadeOut();
                     $('#checkOTPForm').fadeIn();
 
                     toastr.success('کد تاییدیه به شماره موبایل شما ارسال شد!');
-                }).fail(function(response){
+                }).fail(function (response) {
                 if (response.responseJSON && response.responseJSON.errors && response.responseJSON.errors.mobile) {
                     $('#mobileInput').addClass('mb-1');
                     $('#mobileInputError').fadeIn();
@@ -87,34 +90,34 @@
             });
         });
 
-        $('#checkOTPForm').submit(function(event){
+        $('#checkOTPForm').submit(function (event) {
             event.preventDefault();
             $.post("{{ url('/checkOTP') }}",
                 {
-                    '_token' : "{{ csrf_token() }}",
-                    'otp' : $('#checkOTPInput').val(),
-                    'login_token' : loginToken
+                    '_token': "{{ csrf_token() }}",
+                    'otp': $('#checkOTPInput').val(),
+                    'login_token': loginToken
 
-                } , function(){
-                    $(location).attr('href' , "{{ route('admin.index') }}");
+                }, function () {
+                    $(location).attr('href', "{{ route('admin.index') }}");
                     toastr.success('با موفقیت تایید شد!');
-                }).fail(function(response){
+                }).fail(function (response) {
                 $('#checkOTPInput').addClass('mb-1');
                 $('#checkOTPInputError').fadeIn();
                 $('#checkOTPInputErrorText').html(response.responseJSON.errors.otp[0]);
             })
         });
 
-        $('#resendOTP').click(function(e){
+        $('#resendOTP').click(function (e) {
 
             e.preventDefault();
 
             $.post("{{ url('/resendOTP') }}",
                 {
-                    '_token' : "{{ csrf_token() }}",
-                    'login_token' : loginToken
+                    '_token': "{{ csrf_token() }}",
+                    'login_token': loginToken
 
-                } , function(response){
+                }, function (response) {
                     loginToken = response.login_token;
                     toastr.success('رمز یک بار مصرف به شماره موبایل شما ارسال شد!');
 
@@ -122,14 +125,14 @@
                     timer();
                     $('#Time').fadeIn();
 
-                }).fail(function(){
+                }).fail(function () {
                 toastr.error('مشکل در ارسال دوباره رمز یکبار مصرف، مجددا تلاش کنید');
             })
         });
 
         function timer() {
             let time = "1:01";
-            let interval = setInterval(function() {
+            let interval = setInterval(function () {
                 let countdown = time.split(':');
                 let minutes = parseInt(countdown[0], 10);
                 let seconds = parseInt(countdown[1], 10);
@@ -139,7 +142,8 @@
                     clearInterval(interval);
                     $('#Time').hide();
                     $('#resendOTP').fadeIn();
-                };
+                }
+
                 seconds = (seconds < 0) ? 59 : seconds;
                 seconds = (seconds < 10) ? '0' + seconds : seconds;
                 $('#Time').html(minutes + ':' + seconds);
