@@ -14,10 +14,8 @@ class MobileControllerTest extends TestCase
 
     /**
      * Test that a GET request to the mobile endpoint returns the expected view.
-     *
-     * @return void
      */
-    public function test_mobile_get_returns_view()
+    public function test_mobile_get_returns_view(): void
     {
         $response = $this->get('/login');
 
@@ -27,10 +25,8 @@ class MobileControllerTest extends TestCase
 
     /**
      * Test mobile POST request fails validation when mobile is missing.
-     *
-     * @return void
      */
-    public function test_mobile_post_validation_failure()
+    public function test_mobile_post_validation_failure(): void
     {
         $response = $this->post('/login', []);
         $response->assertSessionHasErrors('mobile');
@@ -39,10 +35,8 @@ class MobileControllerTest extends TestCase
     /**
      * Test mobile POST request creates a new user if one does not exist,
      * sets the OTP and login token, and sends an OTP notification.
-     *
-     * @return void
      */
-    public function test_mobile_post_creates_new_user_and_sends_notification()
+    public function test_mobile_post_creates_new_user_and_sends_notification(): void
     {
         Notification::fake();
 
@@ -65,10 +59,8 @@ class MobileControllerTest extends TestCase
 
     /**
      * Test mobile POST request updates an existing user with new OTP and login token.
-     *
-     * @return void
      */
-    public function test_mobile_post_updates_existing_user_and_sends_notification()
+    public function test_mobile_post_updates_existing_user_and_sends_notification(): void
     {
         Notification::fake();
 
@@ -96,10 +88,8 @@ class MobileControllerTest extends TestCase
 
     /**
      * Test that the checkOTP endpoint fails validation when required fields are missing.
-     *
-     * @return void
      */
-    public function test_checkOTP_validation_failure()
+    public function test_checkOTP_validation_failure(): void
     {
         $response = $this->post('/check-otp', []);
 
@@ -108,10 +98,8 @@ class MobileControllerTest extends TestCase
 
     /**
      * Test that submitting an incorrect OTP returns an error.
-     *
-     * @return void
      */
-    public function test_checkOTP_with_incorrect_otp()
+    public function test_checkOTP_with_incorrect_otp(): void
     {
         $user = User::factory()->create([
             'otp'         => '123456',
@@ -131,10 +119,8 @@ class MobileControllerTest extends TestCase
 
     /**
      * Test that submitting the correct OTP logs in the user successfully.
-     *
-     * @return void
      */
-    public function test_checkOTP_with_correct_otp()
+    public function test_checkOTP_with_correct_otp(): void
     {
         $user = User::factory()->create([
             'otp'         => '123456',
