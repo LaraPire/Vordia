@@ -10,11 +10,11 @@ return [
         | This option controls the default SMS driver that is used to send
         | messages to mobile phones.
         |
-        | Supported: "smsir"
+        | Supported: "smsir", "Ghasedakme"
         |
         */
 
-        'default' => env('SMS_DRIVER', 'smsir'),
+        'default' => env('VORDIA_SMS_DRIVER', 'smsir'),
 
         /*
         |--------------------------------------------------------------------------
@@ -31,6 +31,14 @@ return [
                 'config' => [
                     'api_key' => env('SMSIR_API_KEY'),
                     'template_id' => env('SMSIR_OTP_TEMPLATE_ID'),
+                ]
+            ],
+
+            'ghasedak' => [
+                'class' => \Rayiumir\Vordia\Http\Channels\Drivers\Smsir\Ghasedak::class,
+                'config' => [
+                    'api_key' => env('Ghasedak_API_KEY'),
+                    'template_id' => env('Ghasedak_OTP_TEMPLATE_ID'),
                 ]
             ],
         ]
