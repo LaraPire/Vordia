@@ -13,6 +13,11 @@
     <img alt="Packagist Dependency Version" src="https://img.shields.io/packagist/dependency-v/rayiumir/vordia/PHP">
 </div>
 
+<div align="center">
+    <h3>Documentation</h3>
+    <a href="./SMS_API_KEY.md">SMS API KEYS</a>
+</div>
+
 # Vordia
 
 A simple and lightweight mobile authentication package for Laravel And it has a default admin panel.
@@ -40,14 +45,15 @@ php artisan migrate
 Add Fields in Model user.php :
 
 ```php
-protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'mobile',
-        'otp',
-        'login_token'
-    ];
+protected $fillable = 
+[
+  'name',
+  'email',
+  'password',
+  'mobile',
+  'otp',
+  'login_token'
+];
 ```
 # List of SMS Operator
 
@@ -61,20 +67,14 @@ protected $fillable = [
     <tbody>
         <tr>
             <td>SMSIR</td>
-            <td><a href="https://sms.ir">https://sms.ir/</a></td>
+            <td><a href="https://sms.ir">https://sms.ir</a></td>
+        </tr>
+        <tr>
+            <td>Ghasedak</td>
+            <td><a href="https://ghasedak.me">https://ghasedak.me</a></td>
         </tr>
     </tbody>
 </table>
-
-# SMS API KEY
-
-Add this code to `.env`
-
-```bash
-SMS_DRIVER=smsir
-SMSIR_API_KEY= Add API KEY
-SMSIR_OTP_TEMPLATE_ID= ADD OTP TEMPLATE ID
-```
 
 # Screenshots
 
