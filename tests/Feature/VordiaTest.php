@@ -8,10 +8,8 @@ class VordiaTest extends TestCase
 {
     /**
      * Test mobile form submission success via HTTP.
-     *
-     * @return void
      */
-    public function testMobileFormSubmissionSuccess()
+    public function test_mobile_form_submission_success(): void
     {
         $response = $this->post('/login', [
             '_token' => csrf_token(),
