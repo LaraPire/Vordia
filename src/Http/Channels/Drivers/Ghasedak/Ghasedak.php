@@ -1,6 +1,6 @@
 <?php
 
-namespace Rayiumir\Vordia\Http\Channels\Drivers\Smsir;
+namespace Rayiumir\Vordia\Http\Channels\Drivers\Ghasedak;
 
 use Illuminate\Support\Facades\Http;
 use Rayiumir\Vordia\Http\Channels\Drivers\SmsDriverInterface;

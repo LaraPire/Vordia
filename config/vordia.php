@@ -35,7 +35,7 @@ return [
             ],
 
             'ghasedak' => [
-                'class' => \Rayiumir\Vordia\Http\Channels\Drivers\Smsir\Ghasedak::class,
+                'class' => \Rayiumir\Vordia\Http\Channels\Drivers\Ghasedak\Ghasedak::class,
                 'config' => [
                     'api_key' => env('Ghasedak_API_KEY'),
                     'template_id' => env('Ghasedak_OTP_TEMPLATE_ID'),
