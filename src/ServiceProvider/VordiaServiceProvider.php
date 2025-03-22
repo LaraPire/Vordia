@@ -13,7 +13,7 @@ class VordiaServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/vordia.php', 'vordia');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/vordia.php', 'vordia');
     }
 
     /**
@@ -83,7 +83,7 @@ class VordiaServiceProvider extends ServiceProvider
 
     private function _loadConfig(): void
     {
-        $this->publishes([__DIR__ . '/../config' => config_path('/config'),], 'vordia-config');
+        $this->publishes([__DIR__ . '/../../config' => config_path('/config'),], 'vordia-config');
     }
 
 }
