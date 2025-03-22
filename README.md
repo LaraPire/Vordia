@@ -42,7 +42,7 @@ And Migration Database:
 php artisan migrate
 ```
 
-Add Fields in Model user.php :
+Added Fields in Model `user.php` :
 
 ```php
 protected $fillable = 
