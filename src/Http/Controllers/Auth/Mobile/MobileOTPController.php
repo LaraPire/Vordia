@@ -47,7 +47,7 @@ class MobileOTPController extends Controller
 
             Notification::send($user, new OTPSms($OTPCode));
 
-            return response(['login_token' => $loginToken, 'code' => $OTPCode], 200);
+            return response(['login_token' => $loginToken], 200);
         } catch (\Exception $ex) {
             return response(['errors' => $ex->getMessage()], 422);
         }
