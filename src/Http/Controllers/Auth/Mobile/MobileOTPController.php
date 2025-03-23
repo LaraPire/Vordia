@@ -4,25 +4,28 @@ namespace Rayiumir\Vordia\Http\Controllers\Auth\Mobile;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Rayiumir\Vordia\Http\Notifications\OTPSms;
+use Rayiumir\Vordia\Http\Requests\Auth\MobileCheckOTPRequest;
+use Rayiumir\Vordia\Http\Requests\Auth\MobileRequestOTPRequest;
+use Rayiumir\Vordia\Http\Requests\Auth\MobileResendOTPRequest;
 
-class MobileController extends Controller
+class MobileOTPController extends Controller
 {
-    public function mobile(Request $request)
+
+    public function showLoginForm(): View
     {
-        if ($request->method() == 'GET') {
-            return view('Vordia::auth.index');
-        }
+        return view('Vordia::auth.index');
+    }
 
-        $request->validate([
-            'mobile' => ['required']
-        ]);
-
+    public function requestOTP(MobileRequestOTPRequest $request)
+    {
+        $data = $request->validated();
+        $mobile = $data['mobile'];
         try {
-            $user = User::where('mobile', $request->mobile)->first();
+            $user = User::query()->where('mobile', $mobile)->first();
             $OTPCode = mt_rand(100000, 999999);
             $loginToken = Hash::make('DCDCojncd@cdjn%!!ghnjrgtn&&');
 
@@ -36,7 +39,7 @@ class MobileController extends Controller
                     'name' => $request->name ?? 'Null',
                     'email' => $request->email ?? 'null@gmail.com',
                     'password' => bcrypt($request->password ?? 'password'),
-                    'mobile' => $request->mobile,
+                    'mobile' => $mobile,
                     'otp' => $OTPCode,
                     'login_token' => $loginToken
                 ]);
@@ -50,13 +53,8 @@ class MobileController extends Controller
         }
     }
 
-    public function checkOTP(Request $request)
+    public function checkOTP(MobileCheckOTPRequest $request)
     {
-        $request->validate([
-            'otp' => 'required|digits:6',
-            'login_token' => 'required'
-        ]);
-
         try {
             $user = User::where('login_token', $request->login_token)->firstOrFail();
 
@@ -71,12 +69,8 @@ class MobileController extends Controller
         }
     }
 
-    public function resendOTP(Request $request)
+    public function resendOTP(MobileResendOTPRequest $request)
     {
-        $request->validate([
-            'login_token' => 'required'
-        ]);
-
         try {
 
             $user = User::where('login_token', $request->login_token)->firstOrFail();

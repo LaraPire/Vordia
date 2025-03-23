@@ -65,7 +65,7 @@
 
         $('#mobileForm').submit(function (event) {
             event.preventDefault();
-            $.post("{{ url('/login') }}",
+            $.post("{{ route('login.requestOTP') }}",
                 {
                     '_token': "{{ csrf_token() }}",
                     'mobile': $('#mobileInput').val()
@@ -92,7 +92,7 @@
 
         $('#checkOTPForm').submit(function (event) {
             event.preventDefault();
-            $.post("{{ url('/checkOTP') }}",
+            $.post("{{ route('login.checkOTP') }}",
                 {
                     '_token': "{{ csrf_token() }}",
                     'otp': $('#checkOTPInput').val(),
@@ -112,7 +112,7 @@
 
             e.preventDefault();
 
-            $.post("{{ url('/resendOTP') }}",
+            $.post("{{ route('login.resendOTP') }}",
                 {
                     '_token': "{{ csrf_token() }}",
                     'login_token': loginToken
