@@ -36,9 +36,6 @@ class MobileOTPController extends Controller
                 ]);
             } else {
                 $user = User::create([
-                    'name' => $request->name ?? 'Null',
-                    'email' => $request->email ?? 'null@gmail.com',
-                    'password' => bcrypt($request->password ?? 'password'),
                     'mobile' => $mobile,
                     'otp' => $OTPCode,
                     'login_token' => $loginToken
