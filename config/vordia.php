@@ -10,7 +10,7 @@ return [
         | This option controls the default SMS driver that is used to send
         | messages to mobile phones.
         |
-        | Supported: "smsir", "Ghasedakme"
+        | Supported: "Smsir", "Ghasedakme", "Melipayamak"
         |
         */
 
@@ -35,10 +35,18 @@ return [
             ],
 
             'ghasedak' => [
-                'class' => \Rayiumir\Vordia\Http\Channels\Drivers\Ghasedak\Ghasedak::class,
+                'class' => Rayiumir\Vordia\Http\Channels\Drivers\Ghasedak\Ghasedak::class,
                 'config' => [
                     'api_key' => env('GHASEDAK_API_KEY'),
                     'template_id' => env('GHASEDAK_OTP_TEMPLATE_ID'),
+                ]
+            ],
+            'melipayamak' => [
+                'class' => Rayiumir\Vordia\Http\Channels\Drivers\Melipayamak\Melipayamak::class,
+                'config' => [
+                    'username' => env('MELIPAYAMAK_USERNAME'),
+                    'password' => env('MELIPAYAMAK_PASSWORD'),
+                    'pattern' => env('MELIPAYAMAK_PATTERN'),
                 ]
             ],
         ]

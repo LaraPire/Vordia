@@ -73,6 +73,10 @@ protected $fillable =
             <td>Ghasedak</td>
             <td><a href="https://ghasedak.me">https://ghasedak.me</a></td>
         </tr>
+        <tr>
+            <td>Melipayamak</td>
+            <td><a href="https://www.melipayamak.com">https://www.melipayamak.com</a></td>
+        </tr>
     </tbody>
 </table>
 
