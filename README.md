@@ -36,10 +36,18 @@ After Publish Config Files:
 php artisan vendor:publish --provider="Rayiumir\\Vordia\\ServiceProvider\\VordiaServiceProvider"
 ```
 
-And Migration Database:
+Migration Database:
 
 ```bash
 php artisan migrate
+```
+And Run:
+
+```bash
+php artisan Serve
+```
+```bash
+http://127.0.0.1:8000/login
 ```
 
 Added Fields in Model `user.php` :
